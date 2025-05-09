@@ -86,4 +86,16 @@ const swiper = new Swiper(".swiper", {
       window.location.href = languagePath;
     }
   };
+  let lastScrollTop = 0;
+  const langFlags = document.getElementById("languageFlags");
+
+  window.addEventListener("scroll", function () {
+    const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+    if (currentScroll > lastScrollTop) {
+      langFlags.classList.add("hidden");
+    } else {
+      langFlags.classList.remove("hidden");
+    }
+    lastScrollTop = currentScroll <= 0 ? 0 : currentScroll;
+  });
 
